@@ -10,10 +10,11 @@ public class ProductServiceImpl implements ProductService{
 
     private final ProductRepository productRepository;
 
-    private final LRUCache<Long, Product> cache = new LRUCache<>(5);
+    private final LRUCache<Long, Product> cache;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, LRUCache<Long, Product> cache) {
         this.productRepository = productRepository;
+        this.cache = cache;
     }
 
     public Product createProduct(Product product) {
